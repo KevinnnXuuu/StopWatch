@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         buttonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chronometerTime.setBase(0);
+
             }
         });
     }
