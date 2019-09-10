@@ -3,10 +3,13 @@ package com.example.stopwatch;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonReset;
     private Chronometer chronometerTime;
     public static final String TAG = MainActivity.class.getSimpleName();
+    private long elapsedms;
 
     // Look up the log class for Android.
     // list all the levels of logging and when they're used
@@ -84,28 +88,37 @@ public class MainActivity extends AppCompatActivity {
         buttonReset = findViewById(R.id.button_main_reset);
         chronometerTime = findViewById(R.id.chronometer__main_time);
     }
+
+    long startTime = SystemClock.elapsedRealtime();
     public void setLitseners(){
+
         buttonStartStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chronometerTime.start();
-                buttonStartStop.setText("STOP");
-                buttonStartStop.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        chronometerTime.stop();
-                        buttonStartStop.setText("START");
-                    }
-                });
+                if (buttonStartStop.getText().equals("STOP")) {
+                    chronometerTime.stop();
+                    startTime = SystemClock.elapsedRealtime();
+                    buttonStartStop.setText("START");
+                }
+                else {
+                    chronometerTime.setBase(chronometerTime.getBase() + SystemClock.elapsedRealtime() - startTime);
+                    chronometerTime.start();
+                    buttonStartStop.setText("STOP");
+
+                }
             }
         });
 
         buttonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                chronometerTime.stop();
+                chronometerTime.setBase(SystemClock.elapsedRealtime());
+                startTime = SystemClock.elapsedRealtime();
+                buttonStartStop.setText("START");
             }
         });
     }
 }
+
 
