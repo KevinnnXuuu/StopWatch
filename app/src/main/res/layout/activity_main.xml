@@ -21,19 +21,6 @@
         app:layout_constraintVertical_bias="0.331" />
 
     <Button
-        android:id="@+id/button__main_start_stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/main_start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_main_reset"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chronometer__main_time"
-        app:layout_constraintVertical_bias="0.297" />
-
-    <Button
         android:id="@+id/button_main_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,5 +32,21 @@
         app:layout_constraintStart_toEndOf="@+id/button__main_start_stop"
         app:layout_constraintTop_toBottomOf="@+id/chronometer__main_time"
         app:layout_constraintVertical_bias="0.297" />
+
+    <ToggleButton
+        android:id="@+id/button__main_start_stop"
+        android:layout_width="215dp"
+        android:layout_height="149dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="ToggleButton"
+        android:textOff="@string/main_start"
+        android:textOn="@string/main_stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_main_reset"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chronometer__main_time" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
